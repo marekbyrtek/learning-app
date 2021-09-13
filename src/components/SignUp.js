@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 
 const SignUp = () => {
@@ -9,6 +10,7 @@ const SignUp = () => {
     const { signup } = useAuth();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState (false);
+    const history = useHistory();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -20,7 +22,8 @@ const SignUp = () => {
         try {
             setError("");
             setLoading(true);
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value);
+            history.push("/login");
         } catch {
             setError("Nie można stworzyć konta");
         }
@@ -53,7 +56,7 @@ const SignUp = () => {
                 </Card.Body>
             </Card>
             <div className="w=100 text-center mt-2">
-                Masz już konto? Zaloguj się
+                Masz już konto? <Link to="/login">Zaloguj się</Link>
             </div>
         </>
     )

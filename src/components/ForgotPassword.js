@@ -1,26 +1,26 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 
-const Login = () => {
+const ForgotPassword = () => {
     const emailRef = useRef();
-    const passwordRef = useRef();
-    const { login } = useAuth();
+    const { resetPassword } = useAuth();
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState (false);
-    const history = useHistory();
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState("");
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         try {
+            setMessage("");
             setError("");
             setLoading(true);
-            await login(emailRef.current.value, passwordRef.current.value);
-            history.push("/");
+            await resetPassword(emailRef.current.value);
+            setMessage("Sprawdź maila");
         } catch {
-            setError("Nie można się zalogować");
+            setError("Nie można zresetować hasła");
         }
         setLoading(false);
     }
@@ -29,23 +29,20 @@ const Login = () => {
         <>
             <Card>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Zaloguj się</h2>
+                    <h2 className="text-center mb-4">Zapomniałem hasła</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
+                    {message && <Alert variant="success">{message}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required />
                         </Form.Group>
-                        <Form.Group className="mb-3" id="password">
-                            <Form.Label>Hasło</Form.Label>
-                            <Form.Control type="password" ref={passwordRef} required />
-                        </Form.Group>
                         <Button disabled={loading} variant="outline-primary" className="w-100" type="submit">
-                            Zaloguj się
+                            Resetuj hasło
                         </Button>
                     </Form>
                     <div className="w=100 text-center mt-3">
-                        <Link to="/forgot-password" className="btn btn-outline-secondary">Nie pamiętasz hasła?</Link>
+                        <Link to="/login" className="btn btn-outline-secondary">Zaloguj się</Link>
                     </div>
                 </Card.Body>
             </Card>
@@ -56,4 +53,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default ForgotPassword;
