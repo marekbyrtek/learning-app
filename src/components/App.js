@@ -10,6 +10,7 @@ import ForgotPassword from "./ForgotPassword";
 import Sets from "./Sets";
 import Test from "./Test";
 import Learning from "./Learning";
+import Navigation from "./Navigation";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <div className="w-100" style={{ maxWidth: "400px" }}>
           <Router>
             <AuthProvider>
+              <Navigation />
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
                 <PrivateRoute path="/sets" component={Sets} />
