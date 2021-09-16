@@ -31,7 +31,7 @@ const SignUp = () => {
     }
 
     return (
-        <>
+        <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Zarejestruj się</h2>
@@ -58,7 +58,7 @@ const SignUp = () => {
             <div className="w=100 text-center mt-2">
                 Masz już konto? <Link to="/login">Zaloguj się</Link>
             </div>
-        </>
+        </div>
     )
 }
 

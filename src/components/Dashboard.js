@@ -1,10 +1,10 @@
 import React from 'react';
+import ControlledCarousel from './ControlledCarousel';
 
 const Dashboard = () => {
     return (
         <>
-            <h1>Jesteś zalogowany</h1>
-            <h2>Główna</h2>
+            <ControlledCarousel />
         </>
     )
 }

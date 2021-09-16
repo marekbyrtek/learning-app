@@ -26,7 +26,7 @@ const ForgotPassword = () => {
     }
 
     return (
-        <>
+        <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Zapomniałem hasła</h2>
@@ -49,7 +49,7 @@ const ForgotPassword = () => {
             <div className="w=100 text-center mt-2">
                 Nie masz jeszcze konta? <Link to="/signup">Zarejestruj się</Link>
             </div>
-        </>
+        </div>
     )
 }
 

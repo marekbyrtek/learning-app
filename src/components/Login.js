@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     return (
-        <>
+        <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Zaloguj się</h2>
@@ -52,7 +52,7 @@ const Login = () => {
             <div className="w=100 text-center mt-2">
                 Nie masz jeszcze konta? <Link to="/signup">Zarejestruj się</Link>
             </div>
-        </>
+        </div>
     )
 }
 
