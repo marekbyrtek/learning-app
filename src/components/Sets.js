@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { Card, Form, Alert, Button } from "react-bootstrap";
-import { getDatabase, ref, push } from "firebase/database"
-import { getAuth } from "firebase/auth"
+import { Card, Form, Alert, Button, Container } from "react-bootstrap";
+import { getDatabase, ref, push } from "firebase/database";
+import { getAuth } from "firebase/auth";
+import TestButton from './TestButton';
+import Testul from './Testul';
 
 const Sets = () => {
     const wordRef = useRef();
@@ -21,14 +23,13 @@ const Sets = () => {
             word: wordRef.current.value,
             definition: definitionRef.current.value,
             comment: commentRef.current.value,
-            set: setRef.current.value,
             know: false
         };
 
         try {
             setError("");
             setLoading(true);
-            push(ref(database, `users/${userId}`), newWord);
+            push(ref(database, `users/${userId}/${setRef.current.value}`), newWord);
         } catch {
             setError("Nie można się dodać zestawu");
         }
@@ -40,9 +41,7 @@ const Sets = () => {
     }
 
     return (
-        <>
-            <h1>Jesteś zalogowany</h1>
-            <h2>Twoje zestawy</h2>
+        <Container className="d-flex align-items-center flex-column">
             <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card>
                 <Card.Body>
@@ -72,7 +71,9 @@ const Sets = () => {
                 </Card.Body>
             </Card>
         </div>
-        </>
+        <TestButton />
+        <Testul />
+        </Container>
     )
 }
 
