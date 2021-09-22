@@ -4,7 +4,7 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { Link } from "react-router-dom";
 
-const CategoriesButtons = () => {
+const CategoriesButtons = (link) => {
     const [list, setList] = useState(null);
     
     useEffect(() => {
@@ -30,7 +30,7 @@ const CategoriesButtons = () => {
         return (
             <>
                 {list.map((el, i) => {
-                    return <Button variant="outline-primary" key={i} as={Link} to={`/${el}`} className="mt-3 d-flex justify-content-center align-items-center" style={{width: "200px", minHeight: "50px"}}>{el}</Button>
+                    return <Button variant="outline-primary" key={i} as={Link} to={`/${Object.values(link)}/${el}`} className="mt-3 d-flex justify-content-center align-items-center" style={{width: "200px", minHeight: "50px"}}>{el}</Button>
                 })}
             </>
         )

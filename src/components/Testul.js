@@ -12,8 +12,9 @@ const Testul = () => {
         const auth = getAuth();
         const userId = auth.currentUser.uid;
         const dbRef = ref(database);
-
+        console.log(dbRef)
             get(child(dbRef, `users/${userId}`)).then((snapshot) => {
+                console.log("dupa", snapshot.val())
                 if (snapshot.exists()) {
                     console.log(snapshot.val());
                     // const obj = snapshot.val();
@@ -22,7 +23,7 @@ const Testul = () => {
                     //     arr.push(obj[el]);
                     // }
                     // setList(arr);
-                    setCategories(Object.keys(snapshot.val()));
+                    setCategories(snapshot.val());
                 } else {
                 console.log("No data available");
                 }
@@ -31,6 +32,10 @@ const Testul = () => {
             });
         // console.log(list);
     }, [counter])
+
+    const handleClick = id => e => {
+        console.log(id)
+    }
 
     console.log(list);
     // if (list !== null) {
@@ -51,8 +56,13 @@ const Testul = () => {
             <>
             <Button onClick={() => setCounter((prev) => prev + 1)} className="mt-3">Klik 2</Button>
             <ul>
-                {categories.map((el, i) => {
-                    return <li key={i}>{el}</li>
+                {Object.keys(categories).map((el, i) => {
+                    return <li key={i}>
+                        <h2>{el}</h2>
+                        {Object.entries(categories[el]).map(([key, value]) => (
+                            <p onClick={handleClick(key)}>{value.word}</p>
+                        ))}
+                    </li>
                 })}
             </ul>
             </>

@@ -21,10 +21,10 @@ const User = () => {
 
     if (currentUser) {
         return (
-            <>
-                <p>Email: {currentUser.email}</p>
+            <div className="d-flex align-items-center">
+                <p className="user-mail">Email: {currentUser.email}</p>
                 <Button variant="outline-light" onClick={handleLogout}>Wyloguj się</Button>
-            </>
+            </div>
         )
     } else {
         return <Button variant="outline-light" onClick={handleLogIn}>Zaloguj się</Button>

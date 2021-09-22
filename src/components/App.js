@@ -11,6 +11,8 @@ import Sets from "./Sets";
 import Test from "./Test";
 import Learning from "./Learning";
 import Navigation from "./Navigation";
+import GenerateTest from "./GenerateTest";
+import GenerateLearning from "./GenerateLearning";
 
 const App = () => {
   return (
@@ -25,8 +27,10 @@ const App = () => {
               <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} />
                 <PrivateRoute path="/sets" component={Sets} />
-                <PrivateRoute path="/test" component={Test} />
-                <PrivateRoute path="/learning" component={Learning} />
+                <PrivateRoute exact path="/test" component={Test} />
+                <PrivateRoute path="/test/:set" component={GenerateTest} />
+                <PrivateRoute exact path="/learning" component={Learning} />
+                <PrivateRoute path="/learning/:set" component={GenerateLearning} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={Login} />
                 <Route path="/forgot-password" component={ForgotPassword} />

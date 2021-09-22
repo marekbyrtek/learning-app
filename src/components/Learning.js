@@ -7,7 +7,7 @@ const Learning = () => {
         <Container className="d-flex align-items-center flex-column">
             <h1>Jesteś zalogowany</h1>
             <h2>Nauka</h2>
-            <CategoriesButtons />
+            <CategoriesButtons link="learning" />
         </Container>
     )
 }
