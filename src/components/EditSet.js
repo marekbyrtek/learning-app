@@ -9,17 +9,14 @@ import AddWord from "./AddWord";
 const EditSet = () => {
     const { set } = useParams();
     const [list, setList] = useState(null);
-    const [counter, setCounter] = useState(1);
 
     useEffect(() => {
         const database = getDatabase();
         const auth = getAuth();
         const userId = auth.currentUser.uid;
         const dbRef = ref(database);
-        console.log(dbRef)
             get(child(dbRef, `users/${userId}`)).then((snapshot) => {
                 if (snapshot.exists()) {
-                    console.log(snapshot.val());
                     setList(snapshot.val());
                 } else {
                 console.log("No data available");
@@ -27,12 +24,7 @@ const EditSet = () => {
             }).catch((error) => {
                 console.error(error);
             });
-    }, [counter])
-
-    const handleSet = (e) => {
-        e.preventDefault();
-        setCounter(prev => prev + 1);
-    }
+    })
 
     if (list === null) {
         return <h1>Wczytywanie danych</h1>
@@ -61,7 +53,7 @@ const EditSet = () => {
                                 </tr>
                             )
                         })}
-                        {<AddWord set={set} reload={handleSet} />}
+                        {<AddWord set={set} />}
                     </tbody>
                 </Table>
                 <Button onClick={handleSet}>Odśwież</Button>

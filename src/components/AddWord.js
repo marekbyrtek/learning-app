@@ -3,7 +3,7 @@ import { Button, Form, Alert } from "react-bootstrap";
 import { getDatabase, ref, push } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
-const AddWord = (set, reload) => {
+const AddWord = (set) => {
     const wordRef = useRef();
     const definitionRef = useRef();
     const commentRef = useRef();
