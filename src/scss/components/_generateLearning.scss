@@ -1,0 +1,17 @@
+.learning-card {
+    display: flex;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        width: 100%;
+        padding: 50px 0;
+    }
+}
+
+.learning-card-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
