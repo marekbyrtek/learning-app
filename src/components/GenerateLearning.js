@@ -33,6 +33,7 @@ const GenerateLearning = () => {
                     return (
                     <Card className="learning-card" style={{ width: "30rem" }} key={key}>
                         <h1>{value.word}</h1>
+                        <h2>{value.definition}</h2>
                         <div className="learning-card-buttons">
                             <Button>Poprzedni</Button>
                             <Button>Następny</Button>
